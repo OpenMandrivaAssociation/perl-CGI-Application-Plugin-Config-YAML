@@ -11,6 +11,7 @@ Summary:    add Config::YAML support to CGI::Application
 Url:        http://search.cpan.org/dist/%{module}
 Source:     http://www.cpan.org/modules/by-module/CGI/%{module}-%{version}.tar.gz
 BuildRequires: perl(Config::YAML)
+BuildRequires: perl(CGI::Application)
 BuildArch: noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 

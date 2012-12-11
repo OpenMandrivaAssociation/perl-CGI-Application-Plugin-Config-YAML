@@ -1,20 +1,20 @@
 %define upstream_name    CGI-Application-Plugin-Config-YAML
 %define upstream_version 0.01
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    add Config::YAML support to CGI::Application
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Add Config::YAML support to CGI::Application
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Config::YAML)
-BuildRequires: perl(CGI::Application)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Config::YAML)
+BuildRequires:	perl(CGI::Application)
+BuildArch:	noarch
 
 %description
 This plug-in add Config::YAML support to CGI::Application. The usage of this
@@ -26,21 +26,35 @@ This plug-in refers to CGI::Application::Plugin::Config::Simple.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+
+%changelog
+* Sat Apr 16 2011 Funda Wang <fwang@mandriva.org> 0.10.0-2mdv2011.0
++ Revision: 653390
+- rebuild for updated spec-helper
+
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 0.10.0-1mdv2011.0
++ Revision: 405773
+- rebuild using %%perl_convert_version
+
+* Fri Oct 10 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-1mdv2009.1
++ Revision: 291380
+- import perl-CGI-Application-Plugin-Config-YAML
+
+
+* Thu Oct 09 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-1mdv2009.1
+- initial mdv release, generated with cpan2dist
+

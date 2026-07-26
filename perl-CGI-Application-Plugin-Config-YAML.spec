@@ -1,15 +1,13 @@
 %define upstream_name    CGI-Application-Plugin-Config-YAML
-%define upstream_version 0.01
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	0.01
+Release:	7
 
 Summary:	Add Config::YAML support to CGI::Application
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/CGI-Application-Plugin-Config-YAML
-Source0:	https://cpan.metacpan.org/authors/id/N/NE/NEKOKAK/CGI-Application-Plugin-Config-YAML-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/N/NE/NEKOKAK/CGI-Application-Plugin-Config-YAML-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -24,7 +22,7 @@ plug-in can be easily used instead of CGI::Application::Plugin::Config::Simple.
 This plug-in refers to CGI::Application::Plugin::Config::Simple.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -49,9 +47,7 @@ make test
 
 * Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 0.10.0-1mdv2011.0
 + Revision: 405773
-- rebuild using %%perl_convert_version
-
-* Fri Oct 10 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-1mdv2009.1
+- rebuild using %0.01 Fri Oct 10 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-1mdv2009.1
 + Revision: 291380
 - import perl-CGI-Application-Plugin-Config-YAML
 
